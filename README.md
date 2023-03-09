@@ -13,9 +13,83 @@ What does not work:
 -- I expect that
 --- either the return type is array of string
 --- either the return type is array of objects of type string
-I.e. in components we have:
+I.e. currently in schema is as follows:
+
 ```
-       "Reference": {
-        "type": "string"
-      }, 
+{
+	"openapi": "3.0.3",
+	"paths": {
+		"/hello": {
+			"get": {
+				"tags": ["Greeting Resource"],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Reference"
+	}}}}}}}}},
+	"components": {
+		"schemas": {
+			"Reference": {
+				"type": "object",
+				"properties": {
+					"entity": {
+						"type": "string"
+					},
+					"ref": {
+						"type": "string"
+	}}}}}
+}
+```
+
+I expect it be either: 
+```
+{
+	"openapi": "3.0.3",
+	"paths": {
+		"/hello": {
+			"get": {
+				"tags": ["Greeting Resource"],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "string"
+	}}}}}}}}}
+}
+```
+
+or
+
+```
+{
+	"openapi": "3.0.3",
+	"paths": {
+		"/hello": {
+			"get": {
+				"tags": ["Greeting Resource"],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"$ref": "#/components/schemas/Reference"
+	}}}}}}}}},
+	"components": {
+		"schemas": {
+			"Reference": {
+				"type": "string",
+	}}}
+}
 ```
