@@ -17,53 +17,53 @@ I.e. currently in schema is as follows:
 
 ```
 {
-	"openapi": "3.0.3",
-	"paths": {
-		"/hello": {
-			"get": {
-				"tags": ["Greeting Resource"],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "array",
-									"items": {
-										"$ref": "#/components/schemas/Reference"
-	}}}}}}}}},
-	"components": {
-		"schemas": {
-			"Reference": {
-				"type": "object",
-				"properties": {
-					"entity": {
-						"type": "string"
-					},
-					"ref": {
-						"type": "string"
-	}}}}}
+ "openapi": "3.0.3",
+ "paths": {
+  "/hello": {
+   "get": {
+    "tags": ["Greeting Resource"],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Reference"
+ }}}}}}}}},
+ "components": {
+  "schemas": {
+   "Reference": {
+    "type": "object",
+    "properties": {
+     "entity": {
+      "type": "string"
+     },
+     "ref": {
+      "type": "string"
+ }}}}}
 }
 ```
 
 I expect it be either: 
 ```
 {
-	"openapi": "3.0.3",
-	"paths": {
-		"/hello": {
-			"get": {
-				"tags": ["Greeting Resource"],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "array",
-									"items": {
-										"$ref": "string"
-	}}}}}}}}}
+ "openapi": "3.0.3",
+ "paths": {
+  "/hello": {
+   "get": {
+    "tags": ["Greeting Resource"],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "string"
+ }}}}}}}}}
 }
 ```
 
@@ -71,25 +71,25 @@ or
 
 ```
 {
-	"openapi": "3.0.3",
-	"paths": {
-		"/hello": {
-			"get": {
-				"tags": ["Greeting Resource"],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "array",
-									"items": {
-										"$ref": "#/components/schemas/Reference"
-	}}}}}}}}},
-	"components": {
-		"schemas": {
-			"Reference": {
-				"type": "string",
-	}}}
+ "openapi": "3.0.3",
+ "paths": {
+  "/hello": {
+   "get": {
+    "tags": ["Greeting Resource"],
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/Reference"
+ }}}}}}}}},
+ "components": {
+  "schemas": {
+   "Reference": {
+    "type": "string",
+ }}}
 }
 ```
